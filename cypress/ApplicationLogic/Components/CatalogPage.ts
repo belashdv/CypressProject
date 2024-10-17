@@ -6,7 +6,7 @@ export class CatalogPage {
         };
     }
 
-    get TabelContainers () {
+    get TableContainers () {
         return {
             Headline: cy.get('#head_line'),
         };
@@ -15,30 +15,30 @@ export class CatalogPage {
     get DropDowns () {
         return {
             Ads: cy.get('#today_cnt_sl'),
-            PriceMin: cy.get('#f_o_8_min'),
-            PriceMax: cy.get('#f_o_8_max'),
-            YearMin: cy.get('#f_o_18_min'),
-            YearMax: cy.get('#f_o_18_max'),
-            VolumeMin: cy.get('#f_o_15_min'),
-            VolumeMax: cy.get('#f_o_15_max'),
-            Engine: cy.get('#f_o_34'),
-            Transmission: cy.get('#f_o_35'),
-            CarBody: cy.get('#f_o_32'),
-            Shows: cy.get('.filter_sel.w95'),
-            District: cy.get('.filter_sel.w140 '),
-            DealType: cy.get('.filter_sel.l100'),
-            Model: cy.get('.filter_sel').last()
+            PriceMin: this.FilterContainers.FirstLine.get('#f_o_8_min'),
+            PriceMax: this.FilterContainers.FirstLine.get('#f_o_8_max'),
+            YearMin: this.FilterContainers.FirstLine.get('#f_o_18_min'),
+            YearMax: this.FilterContainers.FirstLine.get('#f_o_18_max'),
+            VolumeMin: this.FilterContainers.FirstLine.get('#f_o_15_min'),
+            VolumeMax: this.FilterContainers.FirstLine.get('#f_o_15_max'),
+            Engine: this.FilterContainers.FirstLine.get('#f_o_34'),
+            Transmission: this.FilterContainers.FirstLine.get('#f_o_35'),
+            CarBody: this.FilterContainers.FirstLine.get('#f_o_32'),
+            Shows: this.FilterContainers.SecondLine.get('.filter_sel.w95'),
+            District: this.FilterContainers.SecondLine.get('.filter_sel.w140 '),
+            DealType: this.FilterContainers.SecondLine.get('.filter_sel.l100'),
+            Model: this.FilterContainers.SecondLine.get('.filter_sel').last()
         };
     }
 
     get Buttons () {
         return {
             Search: this.FilterContainers.FirstLine.get('.b.s12'),
-            FilterBy: this.TabelContainers.Headline.get('.msg_column'),
+            FilterBy: this.TableContainers.Headline.get('.msg_column'),
         };
     }
 
     async FilterBy (text: string) {
-        this.TabelContainers.Headline.contains(`${text}`).click()
+        this.TableContainers.Headline.contains(`${text}`).click()
     }
 }
